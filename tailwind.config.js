@@ -6,7 +6,7 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
     container: {
       center: true,
@@ -51,6 +51,29 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: '65ch',
+            color: 'inherit',
+            a: {
+              color: 'inherit',
+              textDecoration: 'none',
+              fontWeight: '500',
+            },
+            strong: {
+              color: 'inherit',
+            },
+            code: {
+              color: 'inherit',
+            },
+            pre: {
+              color: 'inherit',
+              backgroundColor: 'transparent',
+            },
+          },
+        },
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -72,5 +95,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('@tailwindcss/typography'),
+  ],
 }

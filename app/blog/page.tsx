@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { formatDistance } from 'date-fns'
+import { getBlogPosts } from './data'
 
 export const metadata: Metadata = {
   title: 'Blog | Denis Jesus Palma Abanto',
@@ -8,38 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-  const posts = [
-    {
-      id: 1,
-      title: "El futuro del desarrollo inmobiliario en Cusco",
-      excerpt: "Un análisis de las tendencias emergentes en el mercado inmobiliario y cómo la tecnología está transformando las estrategias de inversión...",
-      date: "2024-06-15",
-      author: "Denis Jesus Palma Abanto",
-      readTime: "8 min read",
-      category: "Real Estate",
-      slug: "future-of-real-estate-investment"
-    },
-    {
-      id: 2,
-      title: "Deficit de vivienda en Peru: Un Vistazo al 2023",
-      excerpt: "Una refleccion sobre el deficit de vivienda en la zona sur del pais en el año 2023...",
-      date: "2024-01-10",
-      author: "Denis Jesus Palma Abanto",
-      readTime: "12 min read",
-      category: "Real State",
-      slug: "deficit-vivienda-2023"
-    },
-    {
-      id: 3,
-      title: "De la Ingeniería de Software a la Inversión",
-      excerpt: "Mi viaje personal de la transición de la ingeniería de software a las inversiones en bienes raíces y capital de riesgo...",
-      date: "2024-01-05",
-      author: "Denis Jesus Palma Abanto",
-      readTime: "10 min read",
-      category: "Personal",
-      slug: "software-engineering-to-investment"
-    }
-  ]
+  const posts = getBlogPosts()
 
   return (
     <div className="min-h-screen bg-black text-white p-4 md:p-8">

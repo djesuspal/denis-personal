@@ -66,4 +66,103 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Blog Typography Styles */
+  .prose {
+    @apply text-gray-300 max-w-none;
+  }
+  
+  .prose h1, 
+  .prose h2, 
+  .prose h3, 
+  .prose h4 {
+    @apply text-white mt-8 mb-4 font-bold;
+  }
+  
+  .prose h1 {
+    @apply text-4xl;
+  }
+  
+  .prose h2 {
+    @apply text-2xl;
+  }
+  
+  .prose h3 {
+    @apply text-xl;
+  }
+  
+  .prose p {
+    @apply mb-6 leading-relaxed text-lg;
+  }
+  
+  .prose ul {
+    @apply my-6 ml-4 space-y-2;
+  }
+
+  .prose ul li {
+    @apply relative pl-6 text-gray-300;
+  }
+
+  .prose ul li::before {
+    @apply absolute left-0 top-3 h-1.5 w-1.5 rounded-full bg-gray-500 content-[''];
+  }
+  
+  .prose a {
+    @apply text-blue-400 hover:text-blue-300 transition-colors;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-gray-700 pl-6 my-8 italic text-gray-400;
+  }
+  
+  .prose code {
+    @apply bg-gray-800 px-1.5 py-0.5 rounded text-sm text-gray-200;
+  }
+  
+  .prose pre {
+    @apply bg-gray-800/50 p-4 rounded-lg my-6 overflow-x-auto border border-gray-700;
+  }
+
+  .prose img {
+    @apply rounded-lg my-8;
+  }
+
+  .prose hr {
+    @apply my-12 border-gray-800;
+  }
+
+  .prose table {
+    @apply w-full my-8;
+  }
+
+  .prose table th {
+    @apply px-4 py-2 text-left border-b border-gray-800 font-semibold;
+  }
+
+  .prose table td {
+    @apply px-4 py-2 border-b border-gray-800;
+  }
+
+  .prose figure {
+    @apply my-8;
+  }
+
+  .prose figcaption {
+    @apply text-sm text-gray-400 text-center mt-2;
+  }
+
+  /* Extended spacing for larger screens */
+  @screen md {
+    .prose p {
+      @apply text-xl;
+    }
+
+    .prose ul li {
+      @apply text-lg;
+    }
+
+    .prose blockquote {
+      @apply text-xl;
+    }
+  }
 }
