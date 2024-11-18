@@ -6,20 +6,20 @@ const firaCode = Fira_Code({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
-    default: 'Denis Jesus Palma Abanto | Entrepreneur & Investor',
+    default: 'Denis Jesus Palma Abanto | Empresario e Inversionista',
     template: '%s | Denis Jesus Palma Abanto'
   },
-  description: 'Former software engineer turned entrepreneur and investor. Specializing in real estate investment, venture capital, and technology innovation.',
-  keywords: ['Denis Jesus Palma Abanto', 'Entrepreneur', 'Investor', 'Real Estate', 'Venture Capital', 'Software Engineer'],
+  description: 'Ex ingeniero de software convertido en emprendedor e inversionista. Especializado en inversión inmobiliaria, capital de riesgo e innovación tecnológica.',
+  keywords: ['Denis Jesus Palma Abanto', 'Emprendedor', 'Inversionista', 'Bienes Raíces', 'Capital de Riesgo', 'Ingeniero de Software'],
   authors: [{ name: 'Denis Jesus Palma Abanto' }],
   creator: 'Denis Jesus Palma Abanto',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: 'https://denispalma.com',
+    locale: 'es_ES',
+    url: 'https://denis.pe',
     siteName: 'Denis Jesus Palma Abanto',
-    title: 'Denis Jesus Palma Abanto | Entrepreneur & Investor',
-    description: 'Former software engineer turned entrepreneur and investor.',
+    title: 'Denis Jesus Palma Abanto | Emprendedor e Inversionista',
+    description: 'Ex ingeniero de software convertido en emprendedor e inversionista.',
     images: [
       {
         url: '/images/profile-photo.png',
