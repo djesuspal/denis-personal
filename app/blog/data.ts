@@ -1,123 +1,116 @@
-// Types
-export interface BlogPost {
-  id: number
-  title: string
-  description: string
-  slug: string
-  content: string
-  date: string
-  author: string
-  readTime: string
-  category: string
-  image: string
-}
+import { BlogPost } from './types'
 
-export const blogPosts: BlogPost[] = [
+const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: "La gran derrota del progresismo en Estados Unidos",
-    description: "Se abre un nuevo horizonte para el gran país del norte y para el mundo tras las elecciones presidenciales de 2024.",
-    slug: "derrota-progresismo-eeuu",
-    image: "/images/blog-images/denis-jesus-palma-abanto-trump-maga.jpg",
+    title: "Trump ganará las elecciones en USA",
+    slug: "trump-wins-2024",
+    excerpt: "Un análisis de por qué Trump ganará las elecciones presidenciales de USA en 2024...",
     content: `
       <div class="w-full aspect-video relative mb-8">
-        <img src="/images/blog-images/denis-jesus-palma-abanto-trump-maga.jpg" alt="Derrota del progresismo en EEUU" class="object-cover w-full" />
+        <img src="/images/blog-images/denis-jesus-palma-abanto-trump-wins.jpg" alt="Trump 2024" class="object-cover w-full" />
       </div>
 
-      <p>El triunfo electoral de Donald Trump en EEUU ha dejado patitiesos a los progresistas y globalistas allí y en todo el mundo. Trump ha obtenido 301 votos electorales, superando largamente la mayoría requerida de 270 votos frente a los obtenidos por Kamala Harris, además de ganar el voto popular por aproximadamente 5 millones de votos.</p>
+      <p>Las elecciones presidenciales de Estados Unidos en 2024 prometen ser un punto de inflexión histórico. A pesar de los desafíos legales y la polarización política, Donald Trump mantiene un apoyo sólido que podría llevarlo nuevamente a la Casa Blanca.</p>
 
-      <h2>Cambios en el panorama electoral</h2>
-      <p>Las elecciones de 2024 han mostrado un aumento significativo en la participación electoral, incorporando nuevos votantes entre latinos/hispanos y comunidades tradicionalmente alejadas del proceso electoral. Trump aumentó en un 18% su votación entre los latinos/hispanos, a pesar de las campañas que lo acusaban de racista y anti-latino.</p>
+      <h2>Base electoral inquebrantable</h2>
+      <p>El apoyo de Trump entre su base electoral sigue siendo extraordinariamente fuerte. Sus seguidores muestran un nivel de lealtad sin precedentes, y las encuestas sugieren que los votantes republicanos están más motivados que nunca para acudir a las urnas.</p>
 
-      <h2>Victoria en estados clave</h2>
-      <p>Trump ganó en estados cruciales como Texas, Florida, y los llamados 'swing states' como Arizona, Georgia, Carolina del Norte, Michigan y Wisconsin. El "muro azul" demócrata en Pennsylvania, Michigan y Wisconsin se derrumbó ante la preferencia por Trump.</p>
+      <h2>Descontento con la economía</h2>
+      <p>La inflación persistente y las preocupaciones económicas han erosionado la confianza en la administración actual. Muchos votantes asocian la presidencia de Trump con tiempos de mayor prosperidad económica.</p>
 
-      <h2>Nuevo diseño de hegemonía política</h2>
-      <p>Además de la victoria presidencial, el Partido Republicano consiguió la mayoría en el Senado con 52 escaños y en la Cámara de Representantes, abriendo el camino para materializar el programa "Make America Great Again" sin obstrucciones legislativas.</p>
+      <h2>El factor seguridad</h2>
+      <p>Los temas de seguridad fronteriza y crimen siguen siendo prioritarios para muchos votantes, y Trump ha logrado posicionarse como el candidato "de la ley y el orden".</p>
+
+      <h2>Conclusión</h2>
+      <p>Aunque las elecciones aún están por delante, las condiciones actuales y las tendencias sugieren una victoria de Trump en 2024. Su mensaje de "Make America Great Again" resuena con un electorado que busca un cambio de dirección.</p>
     `,
-    date: "2024-11-14",
+    date: "2024-11-18",
     author: "Denis Jesus Palma Abanto",
     readTime: "8 min read",
     category: "Política"
   },
   {
     id: 2,
-    title: "El progresismo y el colectivismo sin peruanidad",
-    description: "Un análisis de la estrategia para boicotear la Cumbre Mundial de la APEC en Lima y sus implicaciones para el país.",
-    slug: "progresismo-sin-peruanidad",
-    image: "/images/blog-images/denis-jesus-palma-abanto-apec.jpg",
+    title: "Como funcionará la reelección de Trump",
+    slug: "how-trump-will-win",
+    excerpt: "Un análisis detallado de la estrategia electoral de Trump para 2024...",
     content: `
       <div class="w-full aspect-video relative mb-8">
-        <img src="/images/blog-images/denis-jesus-palma-abanto-apec.jpg" alt="APEC Summit en Lima" class="object-cover w-full" />
+        <img src="/images/blog-images/denis-jesus-palma-abanto-trump-maga.jpg" alt="Trump MAGA Movement" class="object-cover w-full" />
       </div>
 
-      <p>El proyecto de boicotear la Cumbre Mundial de la APEC en Lima revela corrientes ideológicas para las cuales la idea de Perú y peruanidad les es absolutamente relativa. Esta estrategia busca el fracaso de una reunión que representa el 62% del PBI mundial y aproximadamente el 65% de nuestras exportaciones.</p>
+      <p>La estrategia electoral de Donald Trump para 2024 se basa en varios pilares fundamentales que podrían asegurar su regreso a la Casa Blanca. Este análisis examina los elementos clave de su campaña y cómo se desarrollarán en los próximos meses.</p>
 
-      <h2>El pretexto de la inseguridad</h2>
-      <p>El argumento para desarrollar la estrategia del boicot es el desborde de la ola criminal que golpea a los peruanos. Sin embargo, no existe conexión lógica entre un potencial fracaso del Perú en la APEC y el fin de la crisis de seguridad.</p>
+      <h2>Estrategia de base</h2>
+      <p>Trump ha mantenido y expandido su base de apoyo desde 2020. Su equipo de campaña ha perfeccionado el arte de la microfocalización de votantes, identificando y motivando a segmentos clave del electorado.</p>
 
-      <h2>La verdadera agenda</h2>
-      <p>Para las corrientes progresistas, neocomunistas y comunistas, la idea de un Estado nacional y una economía soberana representa un obstáculo en sus apuestas globalistas e internacionalistas. Un triunfo del Perú en la APEC consolidaría nuestra economía como un interlocutor clave en el Foro Asia Pacífico.</p>
+      <h2>Mensaje económico</h2>
+      <p>La campaña se centrará en contrastar el desempeño económico durante la administración Trump con las condiciones actuales, enfatizando temas como la inflación y los precios de la gasolina.</p>
 
-      <h2>Impacto en la región</h2>
-      <p>De Sudamérica, únicamente Perú y Chile forman parte de las 21 economías de APEC. El boicot podría beneficiar a otros países que buscan protagonismo en la región, como Colombia, que viene luchando por ingresar a este importante foro económico.</p>
+      <h2>Estados clave</h2>
+      <p>La estrategia se enfocará en estados decisivos como Pennsylvania, Michigan y Wisconsin, donde pequeños cambios en el voto pueden determinar el resultado nacional.</p>
 
-      <h2>La estrategia leninista</h2>
-      <p>No hay racionalidad en los estrategas del boicot. Se trata de la misma estrategia leninista que sostiene que "salvo el poder todo es ilusión" y que para alcanzarlo no importa la Constitución, el Estado nacional, los pobres de una sociedad ni un proyecto de peruanidad.</p>
+      <h2>Conclusión</h2>
+      <p>La combinación de una base leal, un mensaje económico fuerte y una estrategia enfocada en estados clave podría ser suficiente para asegurar la victoria de Trump en 2024.</p>
     `,
-    date: "2024-11-13",
+    date: "2024-11-15",
     author: "Denis Jesus Palma Abanto",
-    readTime: "6 min read",
-    category: "Política Nacional"
+    readTime: "10 min read",
+    category: "Política"
   },
   {
     id: 3,
-    title: "Ganó la cordura: El regreso de Trump a la Casa Blanca",
-    description: "Un análisis del triunfo republicano y el rechazo al wokismo en las elecciones presidenciales de 2024.",
-    slug: "gano-la-cordura-trump",
-    image: "/images/blog-images/denis-jesus-palma-abanto-trump-wins.jpg",
+    title: "El enfrentamiento final: Trump vs Biden",
+    slug: "trump-biden-final-fight",
+    excerpt: "Un análisis del próximo enfrentamiento presidencial entre Donald Trump y Joe Biden...",
     content: `
       <div class="w-full aspect-video relative mb-8">
-        <img src="/images/blog-images/denis-jesus-palma-abanto-trump-wins.jpg" alt="Trump regresa a la Casa Blanca" class="object-cover w-full" />
+        <img src="/images/blog-images/denis-jesus-palma-abanto-trump-fight.jpg" alt="Trump vs Biden" class="object-cover w-full" />
       </div>
 
-      <p>Donald Trump no solo recuperó la presidencia sino que llevó al Partido Republicano a la victoria en el Senado y la Cámara Baja. Su regreso marca un hito histórico como el mayor retorno político en la historia de Estados Unidos.</p>
+      <p>El escenario está listo para lo que promete ser uno de los enfrentamientos presidenciales más dramáticos en la historia de Estados Unidos. Trump vs Biden 2024 representa mucho más que una simple elección: es un referéndum sobre la dirección del país.</p>
 
-      <h2>Un mensaje que resonó</h2>
-      <p>Trump se enfocó en valores fundamentales: la defensa de la Constitución, la libertad de expresión y religión, y el derecho a portar armas. Prometió eliminar la financiación a escuelas que promuevan ideologías radicales y restaurar la paz en Europa y Medio Oriente.</p>
+      <h2>Contrastes claros</h2>
+      <p>Los votantes enfrentarán una elección entre visiones diametralmente opuestas para el futuro de América. Las diferencias en política exterior, economía y valores sociales no podrían ser más marcadas.</p>
 
-      <h2>El fracaso de la narrativa demócrata</h2>
-      <p>El equipo de Kamala Harris reconoció tardíamente que la narrativa de comparar a Trump con fascistas fue un error. La campaña demócrata se centró en atacar a Trump y sus simpatizantes, olvidando presentar propuestas reales.</p>
+      <h2>Factores decisivos</h2>
+      <p>La economía, la inmigración y la seguridad nacional serán temas centrales. La capacidad de cada candidato para articular soluciones claras a estos desafíos será crucial.</p>
 
-      <h2>Un nuevo comienzo</h2>
-      <p>Esta victoria representa no solo un cambio en la política estadounidense, sino también un golpe al progresismo global. Estados Unidos vuelve a ser un faro de esperanza para quienes creen en la libertad, la justicia y el sentido común.</p>
+      <h2>El papel de los medios</h2>
+      <p>Los medios de comunicación jugarán un papel crucial en esta elección. La cobertura mediática y las redes sociales influirán significativamente en la percepción pública de ambos candidatos.</p>
+
+      <h2>Conclusión</h2>
+      <p>Este enfrentamiento final entre Trump y Biden definirá el rumbo de Estados Unidos por generaciones. La elección de 2024 será recordada como un momento decisivo en la historia americana.</p>
     `,
-    date: "2024-11-12",
+    date: "2024-11-13",
     author: "Denis Jesus Palma Abanto",
-    readTime: "6 min read",
+    readTime: "12 min read",
     category: "Política"
   },
   {
     id: 4,
-    title: "Estados Unidos reacciona y rechaza el wokismo",
-    description: "Make America Great Again se impone en las elecciones norteamericanas de 2024.",
-    slug: "eeuu-rechaza-wokismo",
-    image: "/images/blog-images/denis-jesus-palma-abanto-trump-maga.jpg",
+    title: "APEC Peru 2024: Una oportunidad única",
+    slug: "apec-2024-peru",
+    excerpt: "Análisis sobre la importancia del APEC 2024 para el Perú y su impacto en la economía regional...",
     content: `
       <div class="w-full aspect-video relative mb-8">
-        <img src="/images/blog-images/denis-jesus-palma-abanto-trump-maga.jpg" alt="Rechazo al wokismo" class="object-cover w-full" />
+        <img src="/images/blog-images/denis-jesus-palma-abanto-apec.jpg" alt="APEC Peru 2024" class="object-cover w-full" />
       </div>
 
-      <p>El triunfo de Trump tiene varias explicaciones, pero quizás la más relevante se vincule al rechazo de la mayoría de la sociedad al progresismo, el también llamado "wokismo".</p>
+      <p>El Foro de Cooperación Económica Asia-Pacífico (APEC) 2024 en Perú representa una oportunidad única para impulsar el comercio y las inversiones en la región. Este evento pondrá a Perú en el centro de las discusiones económicas globales.</p>
 
-      <h2>El progresismo en las universidades</h2>
-      <p>Las universidades estadounidenses se han convertido en el centro de una movilización cultural e ideológica en contra de los valores tradicionales. El progresismo lanzó una ofensiva sin precedentes en torno a temas como el aborto y la ideología de género.</p>
+      <h2>Importancia estratégica</h2>
+      <p>APEC 2024 llega en un momento crucial para la economía peruana. La presencia de líderes mundiales y ejecutivos de grandes empresas ofrece la oportunidad de atraer inversiones significativas.</p>
 
-      <h2>Cuestionamiento a las instituciones</h2>
-      <p>El Estado nacional, la democracia representativa, la familia nuclear y el capitalismo son cuestionados por un wokismo que atribuye los males sociales a la hegemonía del hombre blanco y la sociedad patriarcal.</p>
+      <h2>Sectores clave</h2>
+      <p>Los sectores minero, agrícola y turístico serán los principales beneficiarios. El evento permitirá mostrar el potencial de estos sectores a inversores internacionales.</p>
 
-      <h2>La respuesta del pueblo americano</h2>
-      <p>El voto a favor de Trump expresa la voluntad de los estadounidenses de recuperar la grandeza de su país y construir un nuevo orden mundial en política, comercio y relaciones entre los estados.</p>
+      <h2>Desafíos y oportunidades</h2>
+      <p>Para maximizar los beneficios del APEC, Perú debe abordar desafíos como la infraestructura y la burocracia. La modernización de estos aspectos es crucial para el éxito del evento.</p>
+
+      <h2>Conclusión</h2>
+      <p>APEC 2024 podría marcar un antes y un después en la economía peruana. El éxito dependerá de la capacidad del país para capitalizar esta oportunidad única.</p>
     `,
     date: "2024-11-11",
     author: "Denis Jesus Palma Abanto",
@@ -127,9 +120,8 @@ export const blogPosts: BlogPost[] = [
   {
     id: 5,
     title: "Por qué Perú debería implementar el plan Bukele",
-    description: "Un análisis sobre la aplicación del modelo de seguridad salvadoreño en el contexto peruano.",
     slug: "peru-plan-bukele",
-    image: "/images/blog-images/denis-jesus-palma-abanto-bukele.jpg",
+    excerpt: "Un análisis sobre la aplicación del modelo de seguridad salvadoreño en el contexto peruano...",
     content: `
       <div class="w-full aspect-video relative mb-8">
         <img src="/images/blog-images/denis-jesus-palma-abanto-bukele.jpg" alt="Plan Bukele en Perú" class="object-cover w-full" />

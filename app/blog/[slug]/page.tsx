@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { format } from 'date-fns'
-import { getBlogPost, BlogPost } from '../data'
+import { getBlogPost } from '../data'
 import { notFound } from 'next/navigation'
+import type { BlogPost } from '../types'
 
 type Props = {
   params: {
@@ -68,7 +69,10 @@ export default function BlogPostPage({ params }: Props) {
             </div>
           </header>
 
-          <div className="space-y-6" dangerouslySetInnerHTML={{ __html: post.content }} />
+          <div 
+            className="space-y-6" 
+            dangerouslySetInnerHTML={{ __html: post.content }} 
+          />
         </article>
       </div>
     </div>
