@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Home | Denis Jesus Palma Abanto',
+  title: 'Denis Jesus Palma Abanto | Empresario e Inversionista',
   description: 'Denis Jesus Palma Abanto es un Software Engineer retirado, dedicado al desarrollo inmobiliario y venture capital',
 }
 
