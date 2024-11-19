@@ -25,7 +25,7 @@ export default function AboutPage() {
             <div>
               <h1 className="text-4xl font-bold mb-4">Denis Jesus Palma Abanto</h1>
               <p className="text-xl text-gray-300">
-                Ex Software Engineer convertido en inversor
+                Empresasrio y Angel Investor (Software Engineer retirado)
               </p>
             </div>
             
@@ -52,6 +52,10 @@ export default function AboutPage() {
                 <div className="flex items-center">
                   <Code className="mr-3 h-5 w-5 text-gray-400 flex-shrink-0" />
                   <span>Sr Software Engineer, Trilogy, 2017 - 2020</span>
+                </div>
+                <div className="flex items-center">
+                  <Code className="mr-3 h-5 w-5 text-gray-400 flex-shrink-0" />
+                  <span>Ejecutivo Asociado - M&A, Trilogy, 2017 - 2020</span>
                 </div>
               </div>
             </div>
