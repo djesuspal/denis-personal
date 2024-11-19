@@ -23,7 +23,7 @@ export default function HomePage() {
         </video>
 
         <h1 className="text-4xl md:text-5xl font-bold mb-2 text-center">/DJPA/</h1>
-        <p className="text-xl md:text-2xl mb-8 text-center">Software Engineer retirado dedicado al desarrollo inmobiliario </p>
+        <p className="text-xl md:text-2xl mb-8 text-center">Empresario y Angel Investor (Software Engineer retirado)</p>
 
         <nav className="flex flex-wrap justify-center gap-6 mb-8">
           <Link 
