@@ -74,7 +74,7 @@ export default function AboutPage() {
         </div>
         
         <div className="mt-16 border-t border-gray-800 pt-8">
-          <h2 className="text-2xl font-semibold mb-4">Enfocado en</h2>
+          <h2 className="text-2xl font-semibold mb-4">Intereses</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {['Real Estate', 'Venture Capital', 'Software Development', 'Blockchain'].map((skill, index) => (
               <div 
