@@ -25,7 +25,8 @@ export default function HomePage() {
         <h1 className="text-4xl md:text-5xl font-bold mb-2 text-center">/DJPA/</h1>
         <p className="text-xl md:text-2xl mb-8 text-center">
           Empresario y Angel Investor
-          (Software Engineer retirado)
+          <br />
+          <span className="block mt-1">(Software Engineer retirado)</span>
         </p>
         <nav className="flex flex-wrap justify-center gap-6 mb-8">
           <Link 
