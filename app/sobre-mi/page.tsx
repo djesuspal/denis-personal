@@ -25,7 +25,7 @@ export default function AboutPage() {
             <div>
               <h1 className="text-4xl font-bold mb-4">Denis Jesus Palma Abanto</h1>
               <p className="text-xl text-gray-300">
-                Empresasrio y Angel Investor (Software Engineer retirado)
+                Empresasrio y Angel Investor
               </p>
             </div>
             
