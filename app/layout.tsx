@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   keywords: ['Denis Jesus Palma Abanto', 'Emprendedor', 'Inversionista', 'Bienes Raíces', 'Capital de Riesgo', 'Ingeniero de Software'],
   authors: [{ name: 'Denis Jesus Palma Abanto' }],
   creator: 'Denis Jesus Palma Abanto',
+  metadataBase: new URL('https://denis.pe'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: 'website',
     locale: 'es_ES',
