@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     description: 'Ex ingeniero de software convertido en emprendedor e inversionista.',
     images: [
       {
-        url: '/images/profile-photo.png',
+        url: '/images/denis-jesus-palma-abanto.png',
         width: 1200,
         height: 630,
         alt: 'Denis Jesus Palma Abanto'
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Denis Jesus Palma Abanto | Entrepreneur & Investor',
     description: 'Former software engineer turned entrepreneur and investor.',
-    images: ['/images/profile-photo.png'],
+    images: ['/images/denis-jesus-palma-abanto.png'],
     creator: '@denispalma'
   },
   robots: {
@@ -59,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={firaCode.className}>
         {children}
       </body>

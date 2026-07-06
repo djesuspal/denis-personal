@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -29,30 +28,34 @@ export default function HomePage() {
           <span className="block mt-1">(Software Engineer retirado)</span>
         </p>
         <nav className="flex flex-wrap justify-center gap-6 mb-8">
-          <Link 
-            href="/sobre-mi" 
+          <Link
+            href="/sobre-mi"
             className="text-white hover:text-gray-300 transition-colors text-lg"
           >
             Sobre mi
           </Link>
-          <Link 
-            href="/empresas" 
+          {/* Oculto temporalmente — la página /empresas sigue disponible
+          <Link
+            href="/empresas"
             className="text-white hover:text-gray-300 transition-colors text-lg"
           >
             Empresas
           </Link>
-          <Link 
-            href="/contacto" 
+          */}
+          <Link
+            href="/contacto"
             className="text-white hover:text-gray-300 transition-colors text-lg"
           >
             Contacto
           </Link>
+          {/* Oculto temporalmente — la página /blog sigue disponible
           <Link
             href="/blog"
             className="text-white hover:text-gray-300 transition-colors text-lg"
           >
             Blog
           </Link>
+          */}
         </nav>
       </main>
 

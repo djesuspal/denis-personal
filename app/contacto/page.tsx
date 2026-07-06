@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Facebook, Instagram, Linkedin, Mail, Twitter } from 'lucide-react'
+import { Linkedin, Mail } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Contacto | Denis Jesus Palma Abanto',
@@ -17,31 +17,10 @@ export default function ContactPage() {
       description: 'Conectar en LinkedIn'
     },
     {
-      name: 'Facebook',
-      url: 'https://www.facebook.com/denis.jesus.palma.abanto',
-      icon: Facebook,
-      username: 'Denis Jesus Palma Abanto',
-      description: 'Seguirme en Facebook'
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/denisj.palma/',
-      icon: Instagram,
-      username: '@denisj.palma',
-      description: 'Detras de escena'
-    },
-    {
-      name: 'X (Twitter)',
-      url: 'https://x.com/dpalab123',
-      icon: Twitter,
-      username: '@dpalab123',
-      description: 'Insights diarios'
-    },
-    {
       name: 'Email',
-      url: 'mailto:denis@belviera.pe',
+      url: 'mailto:me@denis.pe',
       icon: Mail,
-      username: 'denis@belviera.pe',
+      username: 'me@denis.pe',
       description: 'Contacto directo'
     }
   ]
