@@ -1,44 +1,48 @@
-import { Metadata } from 'next'
-import { Fira_Code } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
+import { site } from '@/lib/site'
 import './globals.css'
 
-const firaCode = Fira_Code({ subsets: ['latin'] })
+const sans = Geist({ subsets: ['latin'], variable: '--font-geist-sans', display: 'swap' })
+const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono', display: 'swap' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
-    default: 'Denis Jesus Palma Abanto | Empresario e Inversionista',
-    template: '%s | Denis Jesus Palma Abanto'
+    default: site.title,
+    template: `%s | ${site.name}`,
   },
-  description: 'Ex ingeniero de software convertido en emprendedor e inversionista. Especializado en inversión inmobiliaria, capital de riesgo e innovación tecnológica.',
-  keywords: ['Denis Jesus Palma Abanto', 'Emprendedor', 'Inversionista', 'Bienes Raíces', 'Capital de Riesgo', 'Ingeniero de Software'],
-  authors: [{ name: 'Denis Jesus Palma Abanto' }],
-  creator: 'Denis Jesus Palma Abanto',
-  metadataBase: new URL('https://denis.pe'),
-  alternates: {
-    canonical: '/',
-  },
+  description: site.description,
+  keywords: [
+    site.name,
+    'Empresario',
+    'Inversionista',
+    'Angel Investor',
+    'Bienes Raíces',
+    'Desarrollo Inmobiliario',
+    'Venture Capital',
+    'Blockchain',
+    'Ingeniero de Software',
+    'Lima',
+    'Perú',
+  ],
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
-    locale: 'es_ES',
-    url: 'https://denis.pe',
-    siteName: 'Denis Jesus Palma Abanto',
-    title: 'Denis Jesus Palma Abanto | Emprendedor e Inversionista',
-    description: 'Ex ingeniero de software convertido en emprendedor e inversionista.',
-    images: [
-      {
-        url: '/images/denis-jesus-palma-abanto.png',
-        width: 1200,
-        height: 630,
-        alt: 'Denis Jesus Palma Abanto'
-      }
-    ]
+    locale: 'es_PE',
+    url: '/',
+    siteName: site.name,
+    title: site.title,
+    description: site.description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Denis Jesus Palma Abanto | Entrepreneur & Investor',
-    description: 'Former software engineer turned entrepreneur and investor.',
-    images: ['/images/denis-jesus-palma-abanto.png'],
-    creator: '@denispalma'
+    title: site.title,
+    description: site.description,
   },
   robots: {
     index: true,
@@ -53,15 +57,26 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  themeColor: '#000000',
+  colorScheme: 'dark',
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
-      <body className={firaCode.className}>
-        {children}
+    <html lang="es" className={`${sans.variable} ${mono.variable}`}>
+      <body className="flex min-h-svh flex-col font-sans">
+        <a
+          href="#contenido"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-fg focus:px-4 focus:py-2 focus:text-sm focus:text-bg"
+        >
+          Saltar al contenido
+        </a>
+        <SiteHeader />
+        <main id="contenido" className="flex flex-1 flex-col">
+          {children}
+        </main>
+        <SiteFooter />
       </body>
     </html>
   )

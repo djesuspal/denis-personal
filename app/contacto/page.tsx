@@ -1,62 +1,71 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import { Linkedin, Mail } from 'lucide-react'
+import { Container } from '@/components/container'
+import { CopyButton } from '@/components/copy-button'
+import { ArrowUpRight, LinkedIn, Mail } from '@/components/icons'
+import { PageIntro } from '@/components/page-intro'
+import { delay } from '@/lib/motion'
+import { pageMetadata, site } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: 'Contacto | Denis Jesus Palma Abanto',
-  description: 'Ponte en contacto con Denis Jesús Palma Abanto. Conéctate a través de las redes sociales o por correo electrónico.',
-}
+export const metadata = pageMetadata({
+  title: 'Contacto',
+  description:
+    'Ponte en contacto con Denis Jesus Palma Abanto. Conéctate a través de LinkedIn o escribe directamente por correo electrónico.',
+  path: '/contacto',
+})
+
+const rowClass =
+  'group grid gap-5 border-t border-line py-8 sm:grid-cols-[180px_1fr_auto] sm:items-center sm:gap-8'
+const labelClass =
+  'flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-[0.16em] text-fg-subtle'
+const valueClass =
+  'w-fit text-2xl font-medium tracking-[-0.03em] text-fg transition-opacity duration-200 hover:opacity-70 sm:text-3xl'
 
 export default function ContactPage() {
-  const socialLinks = [
-    {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/denis-jesus-palma-abanto-512417336/',
-      icon: Linkedin,
-      username: 'Denis Jesus Palma Abanto',
-      description: 'Conectar en LinkedIn'
-    },
-    {
-      name: 'Email',
-      url: 'mailto:me@denis.pe',
-      icon: Mail,
-      username: 'me@denis.pe',
-      description: 'Contacto directo'
-    }
-  ]
-
   return (
-    <div className="min-h-screen bg-black text-white p-4 md:p-8">
-      <div className="max-w-4xl mx-auto">
-        <Link 
-          href="/" 
-          className="text-gray-400 hover:text-white transition-colors mb-8 inline-block"
-        >
-          ← Regresar
-        </Link>
-        
-        <h1 className="text-4xl font-bold mb-8">Contacto</h1>
-        
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {socialLinks.map((link) => {
-            const Icon = link.icon
-            return (
+    <section className="flex-1">
+      <Container className="pb-24 pt-10 sm:pt-16">
+        <PageIntro eyebrow="Contacto" title="Hablemos.">
+          <p>Conéctate a través de LinkedIn o escríbeme directamente por correo.</p>
+        </PageIntro>
+
+        <div className="animate-rise stagger mt-14 border-b border-line sm:mt-20" style={delay(260)}>
+          <div className={rowClass}>
+            <p className={labelClass}>
+              <Mail width={14} height={14} /> Correo
+            </p>
+            <a href={`mailto:${site.email}`} className={valueClass}>
+              {site.email}
+            </a>
+            <div className="flex gap-2">
+              <CopyButton value={site.email} label="Copiar" />
               <a
-                key={link.name}
-                href={link.url}
-                className="flex flex-col space-y-2 bg-gray-900/50 hover:bg-gray-900 transition-colors p-6 rounded-lg"
+                href={`mailto:${site.email}`}
+                className="inline-flex h-10 items-center gap-2 rounded-full bg-fg px-4 text-sm font-medium text-bg transition-colors hover:bg-white"
               >
-                <div className="flex items-center space-x-3">
-                  <Icon className="w-6 h-6" />
-                  <div className="font-medium">{link.name}</div>
-                </div>
-                <div className="text-sm text-gray-400">{link.username}</div>
-                <div className="text-sm text-gray-500">{link.description}</div>
+                Escribir
+                <ArrowUpRight className="-mr-0.5" />
               </a>
-            )
-          })}
+            </div>
+          </div>
+
+          <div className={rowClass}>
+            <p className={labelClass}>
+              <LinkedIn width={13} height={13} /> LinkedIn
+            </p>
+            <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className={valueClass}>
+              {site.name}
+            </a>
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-10 w-fit items-center gap-2 rounded-full border border-line-strong px-4 text-sm text-fg transition-colors hover:border-white/30 hover:bg-white/[0.04]"
+            >
+              Ver perfil
+              <ArrowUpRight className="-mr-0.5" />
+            </a>
+          </div>
         </div>
-      </div>
-    </div>
+      </Container>
+    </section>
   )
 }

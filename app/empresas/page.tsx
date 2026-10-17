@@ -1,129 +1,125 @@
-'use client'
-
-import { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Container } from '@/components/container'
+import { ArrowUpRight } from '@/components/icons'
+import { PageIntro } from '@/components/page-intro'
+import { delay } from '@/lib/motion'
+import { pageMetadata } from '@/lib/site'
+
+export const metadata = pageMetadata({
+  title: 'Empresas',
+  description: 'Empresas en las que participa Denis Jesus Palma Abanto: inmobiliaria, diseño, blockchain y servicios.',
+  path: '/empresas',
+})
+
+// Optical sizing so square marks and long wordmarks carry similar visual weight
+const logoBox = {
+  square: 'h-16 w-24',
+  mid: 'h-12 w-28',
+  wide: 'h-9 w-44',
+} as const
+
+const companies: {
+  name: string
+  description: string
+  logo: string
+  logoSize: keyof typeof logoBox
+  website: string
+}[] = [
+  {
+    name: 'Belviera Desarrolladora',
+    description: 'Desarrolladora de proyectos inmobiliarios en Perú.',
+    logo: '/logos/belviera.png',
+    logoSize: 'square',
+    website: 'https://belviera.pe',
+  },
+  {
+    name: 'Alurea Estudio',
+    description: 'Estudio de diseño de interiores y arquitectura en Perú.',
+    logo: '/logos/alurea.png',
+    logoSize: 'square',
+    website: 'https://alurea.pe',
+  },
+  {
+    name: 'Pixel Labs',
+    description: 'Consultoría en IT y blockchain, especializada en Solana.',
+    logo: '/logos/pixel.png',
+    logoSize: 'mid',
+    website: 'https://pixelabs.lat',
+  },
+  {
+    name: 'Hashpath Consulting',
+    description: 'Seguridad en blockchain, auditoría de contratos inteligentes y soluciones de infraestructura.',
+    logo: '/logos/hashpath.png',
+    logoSize: 'wide',
+    website: 'https://hashpath.xyz',
+  },
+  {
+    name: 'LM Cobranzas',
+    description: 'Gestión de cobranzas extrajudicial.',
+    logo: '/logos/lm.png',
+    logoSize: 'wide',
+    website: 'https://lmcobranzas.com',
+  },
+  {
+    name: 'Shieldify',
+    description: 'Servicios de auditoría de smart contracts.',
+    logo: '/logos/shieldify.png',
+    logoSize: 'wide',
+    website: 'https://shieldify.lat',
+  },
+  {
+    name: 'Cyrenix',
+    description: 'Desarrollo de infraestructura e inversiones en blockchain.',
+    logo: '/logos/cyrenix.png',
+    logoSize: 'wide',
+    website: 'https://cyrenix.xyz',
+  },
+]
 
 export default function CompaniesPage() {
-  const companies = [
-    {
-      id: 1,
-      name: "Belviera Desarrolladora",
-      description: "Belviera es una desarrolladora de proyectos inmobiliarios en Peru.",
-      logo: "/logos/belviera.png",
-      website: "https://belviera.pe"
-    },
-    {
-      id: 2,
-      name: "Alurea Estudio",
-      description: "Alurea es un estudio de diseño de interiores y arquitectura en Peru.",
-      logo: "/logos/alurea.png",
-      website: "https://alurea.pe"
-    },
-    {
-      id: 3,
-      name: "Pixel Labs",
-      description: "Pixel Labs es una empresa de consultoria en IT y Blockchain, especializada en Solana.",
-      logo: "/logos/pixel.png",
-      website: "https://pixelabs.lat"
-    },
-    {
-      id: 4,
-      name: "Hashpath Consulting",
-      description: "Hashpath es una empresa que brinda servicios seguridad en blockchain, auditoría de contratos inteligentes y soluciones de infraestructura.",
-      logo: "/logos/hashpath.png",
-      website: "https://hashpath.xyz"
-    },
-    {
-      id: 5,
-      name: "LM Cobranzas",
-      description: "LM Cobranzas es una empresa de gestion de cobranzas extrajudicial.",
-      logo: "/logos/lm.png",
-      website: "https://lmcobranzas.com"
-    },
-    {
-      id: 6,
-      name: "Shieldify",
-      description: "Shieldify es una empresa que brinda servicios de auditoría de smart contracts.",
-      logo: "/logos/shieldify.png",
-      website: "https://shieldify.lat"
-    },
-    {
-      id: 7,
-      name: "Cyrenix",
-      description: "Cyrenix es una empresa dedicada al desarrollo de infraestructura e inversiones en Blockchain.",
-      logo: "/logos/cyrenix.png",
-      website: "https://cyrenix.xyz"
-    }
-  ]
-
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  const nextCompany = () => {
-    setCurrentIndex((prev) => (prev + 1) % companies.length)
-  }
-
-  const prevCompany = () => {
-    setCurrentIndex((prev) => (prev - 1 + companies.length) % companies.length)
-  }
-
   return (
-    <div className="min-h-screen bg-black text-white p-4 md:p-8">
-      <div className="max-w-6xl mx-auto">
-        <Link 
-          href="/" 
-          className="text-gray-400 hover:text-white transition-colors mb-8 inline-block"
+    <section className="flex-1">
+      <Container className="pb-24 pt-10 sm:pt-16">
+        <PageIntro eyebrow="Empresas" title="Portafolio" />
+
+        <ul
+          className="animate-rise stagger mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:mt-20 sm:grid-cols-2 lg:grid-cols-3"
+          style={delay(220)}
         >
-          ← Regresar
-        </Link>
-        
-        <h1 className="text-4xl font-bold mb-12">Empresas</h1>
-        
-        <div className="relative flex items-center justify-between gap-4">
-          <button
-            onClick={prevCompany}
-            className="p-2 hover:bg-gray-800 rounded-full transition-colors"
-            aria-label="Previous company"
-          >
-            <ChevronLeft className="w-8 h-8" />
-          </button>
-          
-          <div className="text-center px-4 md:px-12 w-full max-w-4xl mx-auto">
-            <a 
-              href={companies[currentIndex].website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block group"
-            >
-              <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 mx-auto mb-8 transition-transform duration-300 group-hover:scale-105">
-                <Image
-                  src={companies[currentIndex].logo}
-                  alt={`${companies[currentIndex].name} logo`}
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, 384px"
-                  priority
-                />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-4 hover:text-gray-300 transition-colors">
-                {companies[currentIndex].name}
-              </h2>
-            </a>
-            <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">
-              {companies[currentIndex].description}
-            </p>
-          </div>
-          
-          <button
-            onClick={nextCompany}
-            className="p-2 hover:bg-gray-800 rounded-full transition-colors"
-            aria-label="Next company"
-          >
-            <ChevronRight className="w-8 h-8" />
-          </button>
-        </div>
-      </div>
-    </div>
+          {companies.map((company) => (
+            <li key={company.name} className="bg-bg">
+              <a
+                href={company.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex h-full flex-col gap-6 p-6 transition-colors duration-300 hover:bg-surface"
+              >
+                <div className="grid h-28 place-items-center rounded-xl bg-surface-2/60">
+                  <div className={`relative ${logoBox[company.logoSize]}`}>
+                    <Image
+                      src={company.logo}
+                      alt={`Logo de ${company.name}`}
+                      fill
+                      sizes="176px"
+                      className="object-contain opacity-75 brightness-0 invert transition-opacity duration-300 group-hover:opacity-100"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col">
+                  <div className="flex items-start justify-between gap-4">
+                    <h2 className="text-lg font-medium tracking-[-0.01em] text-fg">{company.name}</h2>
+                    <ArrowUpRight className="mt-1 shrink-0 text-fg-subtle transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg" />
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">{company.description}</p>
+                  <p className="mt-auto pt-5 font-mono text-xs text-fg-subtle">
+                    {new URL(company.website).hostname}
+                  </p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </section>
   )
 }

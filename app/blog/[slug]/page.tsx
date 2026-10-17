@@ -1,80 +1,110 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
-import { format } from 'date-fns'
-import { getBlogPost } from '../data'
 import { notFound } from 'next/navigation'
-import type { BlogPost } from '../types'
+import { Container } from '@/components/container'
+import { ArrowLeft } from '@/components/icons'
+import { formatDate } from '@/lib/date'
+import { delay } from '@/lib/motion'
+import { site } from '@/lib/site'
+import { getBlogPost, getBlogPosts } from '../data'
 
-type Props = {
-  params: {
-    slug: string
-  }
+type Props = { params: Promise<{ slug: string }> }
+
+export const dynamicParams = false
+
+export function generateStaticParams() {
+  return getBlogPosts().map(({ slug }) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getBlogPost(params.slug)
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found'
-    }
-  }
+  const post = getBlogPost((await params).slug)
+  if (!post) return { title: 'Artículo no encontrado' }
 
+  const path = `/blog/${post.slug}`
   return {
-    title: `${post.title} | Denis Jesus Palma Abanto`,
+    title: post.title,
     description: post.excerpt,
+    alternates: { canonical: path },
     openGraph: {
+      type: 'article',
+      locale: 'es_PE',
+      siteName: site.name,
+      url: path,
       title: post.title,
       description: post.excerpt,
-      type: 'article',
       publishedTime: post.date,
       authors: [post.author],
+      images: [{ url: post.image.src, alt: post.image.alt }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image.src],
     },
   }
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = getBlogPost(params.slug)
-  
-  if (!post) {
-    notFound()
-  }
+export default async function BlogPostPage({ params }: Props) {
+  const post = getBlogPost((await params).slug)
+  if (!post) notFound()
 
   return (
-    <div className="min-h-screen bg-black text-white p-4 md:p-8">
-      <div className="max-w-3xl mx-auto">
-        <Link 
-          href="/blog" 
-          className="text-gray-400 hover:text-white transition-colors mb-8 inline-block"
+    <article className="flex-1">
+      <Container className="max-w-[820px] pb-24 pt-10 sm:pt-14">
+        <Link
+          href="/blog"
+          className="group inline-flex items-center gap-2 text-sm text-fg-muted transition-colors hover:text-fg"
         >
-          ← Volver al blog
+          <ArrowLeft className="transition-transform duration-300 group-hover:-translate-x-0.5" />
+          Blog
         </Link>
-        
-        <article className="prose prose-invert max-w-none">
-          <header className="mb-12">
-            <div className="mb-6">
-              <span className="text-sm text-gray-400 bg-gray-900/50 px-3 py-1 rounded-full">
-                {post.category}
-              </span>
-            </div>
-            
-            <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-            
-            <div className="flex flex-wrap items-center text-sm text-gray-400 gap-4">
-              <span>{post.author}</span>
-              <span>•</span>
-              <span>{format(new Date(post.date), 'MMMM d, yyyy')}</span>
-              <span>•</span>
-              <span>{post.readTime}</span>
-            </div>
-          </header>
 
-          <div 
-            className="space-y-6" 
-            dangerouslySetInnerHTML={{ __html: post.content }} 
+        <header className="mt-10">
+          <p
+            className="animate-rise stagger font-mono text-[11px] uppercase tracking-[0.16em] text-fg-subtle"
+            style={delay(40)}
+          >
+            {post.category}
+          </p>
+          <h1
+            className="animate-rise stagger mt-4 text-[clamp(2rem,4.6vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.04em]"
+            style={delay(100)}
+          >
+            {post.title}
+          </h1>
+          <p
+            className="animate-rise stagger mt-6 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-fg-subtle"
+            style={delay(160)}
+          >
+            <span>{post.author}</span>
+            <span aria-hidden="true">·</span>
+            <time dateTime={post.date}>{formatDate(post.date)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{post.readTime} de lectura</span>
+          </p>
+        </header>
+
+        <div
+          className="animate-fade relative mt-10 aspect-video overflow-hidden rounded-2xl bg-surface"
+          style={delay(200)}
+        >
+          <Image
+            src={post.image.src}
+            alt={post.image.alt}
+            fill
+            preload
+            sizes="(min-width: 820px) 760px, calc(100vw - 40px)"
+            className="object-cover"
           />
-        </article>
-      </div>
-    </div>
+        </div>
+
+        <div
+          className="prose-post mx-auto mt-12 max-w-[68ch]"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+      </Container>
+    </article>
   )
 }

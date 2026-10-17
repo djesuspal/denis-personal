@@ -1,4 +1,4 @@
-import { BlogPost } from './types'
+import type { BlogPost } from './types'
 
 const blogPosts: BlogPost[] = [
   {
@@ -6,11 +6,8 @@ const blogPosts: BlogPost[] = [
     title: "APEC Peru 2024: Una oportunidad única",
     slug: "apec-2024-peru",
     excerpt: "Análisis sobre la importancia del APEC 2024 para el Perú y su impacto en la economía regional...",
+    image: { src: "/images/blog-images/denis-jesus-palma-abanto-apec.jpg", alt: "APEC Peru 2024" },
     content: `
-      <div class="w-full aspect-video relative mb-8">
-        <img src="/images/blog-images/denis-jesus-palma-abanto-apec.jpg" alt="APEC Peru 2024" class="object-cover w-full" />
-      </div>
-
       <p>El Foro de Cooperación Económica Asia-Pacífico (APEC) 2024 en Perú representa una oportunidad única para impulsar el comercio y las inversiones en la región. Este evento pondrá a Perú en el centro de las discusiones económicas globales.</p>
 
       <h2>Importancia estratégica</h2>
@@ -27,7 +24,7 @@ const blogPosts: BlogPost[] = [
     `,
     date: "2024-11-11",
     author: "Denis Jesus Palma Abanto",
-    readTime: "7 min read",
+    readTime: "7 min",
     category: "Política"
   },
   {
@@ -35,11 +32,8 @@ const blogPosts: BlogPost[] = [
     title: "Por qué Perú debería implementar el plan Bukele",
     slug: "peru-plan-bukele",
     excerpt: "Un análisis sobre la aplicación del modelo de seguridad salvadoreño en el contexto peruano...",
+    image: { src: "/images/blog-images/denis-jesus-palma-abanto-bukele.jpg", alt: "Plan Bukele en Perú" },
     content: `
-      <div class="w-full aspect-video relative mb-8">
-        <img src="/images/blog-images/denis-jesus-palma-abanto-bukele.jpg" alt="Plan Bukele en Perú" class="object-cover w-full" />
-      </div>
-
       <p>La inseguridad ciudadana es una de las mayores preocupaciones en América Latina, y Perú no es la excepción. Las políticas de seguridad implementadas por Nayib Bukele en El Salvador han captado la atención como posible solución.</p>
 
       <h2>Los tres pilares del plan</h2>
@@ -51,21 +45,18 @@ const blogPosts: BlogPost[] = [
       <h2>Reforma integral</h2>
       <p>Las políticas de mano dura deben complementarse con una revisión profunda del sistema de justicia y programas que aborden las causas estructurales de la criminalidad, como la pobreza y la falta de oportunidades.</p>
     `,
-    date: "2024-11-3",
+    date: "2024-11-03",
     author: "Denis Jesus Palma Abanto",
-    readTime: "5 min read",
+    readTime: "5 min",
     category: "Política"
   },
-    {
+  {
     id: 3,
     title: "Trump ganará las elecciones en USA",
     slug: "trump-wins-2024",
     excerpt: "Un análisis de por qué Trump ganará las elecciones presidenciales de USA en 2024...",
+    image: { src: "/images/blog-images/denis-jesus-palma-abanto-trump-wins.jpg", alt: "Trump 2024" },
     content: `
-      <div class="w-full aspect-video relative mb-8">
-        <img src="/images/blog-images/denis-jesus-palma-abanto-trump-wins.jpg" alt="Trump 2024" class="object-cover w-full" />
-      </div>
-
       <p>Las elecciones presidenciales de Estados Unidos en 2024 prometen ser un punto de inflexión histórico. A pesar de los desafíos legales y la polarización política, Donald Trump mantiene un apoyo sólido que podría llevarlo nuevamente a la Casa Blanca.</p>
 
       <h2>Base electoral inquebrantable</h2>
@@ -80,9 +71,9 @@ const blogPosts: BlogPost[] = [
       <h2>Conclusión</h2>
       <p>Aunque las elecciones aún están por delante, las condiciones actuales y las tendencias sugieren una victoria de Trump en 2024. Su mensaje de "Make America Great Again" resuena con un electorado que busca un cambio de dirección.</p>
     `,
-    date: "2024-11-2",
+    date: "2024-11-02",
     author: "Denis Jesus Palma Abanto",
-    readTime: "8 min read",
+    readTime: "8 min",
     category: "Política"
   },
   {
@@ -90,11 +81,8 @@ const blogPosts: BlogPost[] = [
     title: "Como funcionará la reelección de Trump",
     slug: "how-trump-will-win",
     excerpt: "Un análisis detallado de la estrategia electoral de Trump para 2024...",
+    image: { src: "/images/blog-images/denis-jesus-palma-abanto-trump-maga.jpg", alt: "Trump MAGA Movement" },
     content: `
-      <div class="w-full aspect-video relative mb-8">
-        <img src="/images/blog-images/denis-jesus-palma-abanto-trump-maga.jpg" alt="Trump MAGA Movement" class="object-cover w-full" />
-      </div>
-
       <p>La estrategia electoral de Donald Trump para 2024 se basa en varios pilares fundamentales que podrían asegurar su regreso a la Casa Blanca. Este análisis examina los elementos clave de su campaña y cómo se desarrollarán en los próximos meses.</p>
 
       <h2>Estrategia de base</h2>
@@ -109,21 +97,18 @@ const blogPosts: BlogPost[] = [
       <h2>Conclusión</h2>
       <p>La combinación de una base leal, un mensaje económico fuerte y una estrategia enfocada en estados clave podría ser suficiente para asegurar la victoria de Trump en 2024.</p>
     `,
-    date: "2024-11-1",
+    date: "2024-11-01",
     author: "Denis Jesus Palma Abanto",
-    readTime: "10 min read",
+    readTime: "10 min",
     category: "Política"
   },
-    {
+  {
     id: 1,
     title: "El enfrentamiento final: Trump vs Harris",
     slug: "trump-biden-final-fight",
     excerpt: "Un análisis del próximo enfrentamiento presidencial entre Donald Trump y Kamala Harris...",
+    image: { src: "/images/blog-images/denis-jesus-palma-abanto-trump-fight.jpg", alt: "Trump vs Harris" },
     content: `
-      <div class="w-full aspect-video relative mb-8">
-        <img src="/images/blog-images/denis-jesus-palma-abanto-trump-fight.jpg" alt="Trump vs Biden" class="object-cover w-full" />
-      </div>
-
       <p>El escenario está listo para lo que promete ser uno de los enfrentamientos presidenciales más dramáticos en la historia de Estados Unidos. Trump vs Harris 2024 representa mucho más que una simple elección: es un referéndum sobre la dirección del país.</p>
 
       <h2>Contrastes claros</h2>
@@ -140,7 +125,7 @@ const blogPosts: BlogPost[] = [
     `,
     date: "2024-10-10",
     author: "Denis Jesus Palma Abanto",
-    readTime: "12 min read",
+    readTime: "12 min",
     category: "Política"
   }
 ]
