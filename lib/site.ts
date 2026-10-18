@@ -4,10 +4,10 @@ export const site = {
   name: 'Denis Jesus Palma Abanto',
   mark: '/DJPA/',
   url: 'https://www.denis.pe',
-  role: 'Empresario y Angel Investor',
+  role: 'Software Engineer, Empresario y Angel Investor',
   title: 'Denis Jesus Palma Abanto | Empresario e Inversionista',
   description:
-    'Empresario y Angel Investor. Actualmente en QuickNode; invierte en bienes raíces y startups de tecnología.',
+    'Software Engineer, Empresario y Angel Investor. Actualmente en QuickNode; invierte en bienes raíces y startups de tecnología.',
   company: { name: 'QuickNode', url: 'https://www.quicknode.com' },
   email: 'me@denis.pe',
   linkedin: 'https://www.linkedin.com/in/denis-jesus-palma-abanto-512417336/',

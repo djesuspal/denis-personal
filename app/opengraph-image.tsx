@@ -75,8 +75,21 @@ export default async function OpengraphImage() {
               <span>Denis Jesus</span>
               <span>Palma Abanto</span>
             </div>
-            <div style={{ display: 'flex', marginTop: 26, fontFamily: 'Geist', fontSize: 32, color: '#a3a3a3' }}>
-              {site.role}
+            {/* One line per comma-separated part so the text clears the portrait */}
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                marginTop: 26,
+                fontFamily: 'Geist',
+                fontSize: 32,
+                lineHeight: 1.3,
+                color: '#a3a3a3',
+              }}
+            >
+              {site.role.split(', ').map((part, i, parts) => (
+                <span key={part}>{i < parts.length - 1 ? `${part},` : part}</span>
+              ))}
             </div>
             <div
               style={{

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { CompanyLink } from '@/components/company-link'
 import { Container } from '@/components/container'
 import { VoxelCube } from '@/components/voxel-cube'
 import { delay } from '@/lib/motion'
@@ -49,7 +48,7 @@ export default function HomePage() {
             {site.name}
           </h1>
           <p className="animate-rise stagger mt-2.5 text-balance text-fg-muted" style={delay(240)}>
-            {site.role}. Hoy en <CompanyLink />.
+            {site.role}
           </p>
         </Container>
       </section>
