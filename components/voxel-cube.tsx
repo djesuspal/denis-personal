@@ -7,12 +7,17 @@ import { useEffect, useRef } from 'react'
  * into empty neighbours, the same motif as the old 2.6 MB hero video but
  * vector-sharp at any size and a few KB of JS. Pauses off-screen, renders a
  * still frame for prefers-reduced-motion, and stirs faster on hover.
+ *
+ * The backing store tracks the real device-pixel size (DPR 3 phones, browser
+ * zoom, moving between monitors), and vertical edges are snapped to the pixel
+ * grid so the lines stay as crisp as the surrounding text.
  */
 
 const N = 6
 const EMPTY_RATIO = 0.3
 const MOVE_MS = 560
 const COS30 = Math.cos(Math.PI / 6)
+const MAX_DPR = 3
 
 const EDGE = 'rgba(255,255,255,0.88)'
 const INNER = 'rgba(255,255,255,0.5)'
@@ -114,25 +119,47 @@ export function VoxelCube({ className }: { className?: string }) {
       }
     }
 
-    let w = 0
+    let w = 0 // CSS px
     let h = 0
-    let s = 0
+    let scale = 1 // device px per CSS px
+    let s = 0 // voxel edge, CSS px
+    let stepX = 0 // horizontal screen step per unit of (X - Z), snapped to device px
+    let cx = 0
+    let cy = 0
+    let edgeWidth = 1
+    let innerWidth = 1
 
-    function resize() {
+    /** Round a CSS length to whole device pixels (at least `min` of them). */
+    const snap = (cssPx: number, min = 1) => Math.max(min, Math.round(cssPx * scale)) / scale
+
+    function resize(deviceSize?: { inlineSize: number; blockSize: number }) {
       const rect = canvas!.getBoundingClientRect()
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      if (!rect.width || !rect.height) return
+      const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR)
+      const bw = Math.min(deviceSize?.inlineSize ?? Math.round(rect.width * dpr), Math.round(rect.width * MAX_DPR))
+      const bh = Math.min(deviceSize?.blockSize ?? Math.round(rect.height * dpr), Math.round(rect.height * MAX_DPR))
       w = rect.width
       h = rect.height
-      canvas!.width = Math.round(w * dpr)
-      canvas!.height = Math.round(h * dpr)
-      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0)
+      scale = bw / w
+      if (canvas!.width !== bw) canvas!.width = bw
+      if (canvas!.height !== bh) canvas!.height = bh
+      ctx!.setTransform(bw / w, 0, 0, bh / h, 0, 0)
       ctx!.lineJoin = 'round'
+
       s = Math.min(w / (2 * COS30 * N), h / (2 * N)) * 0.94
+      edgeWidth = snap(Math.max(1, s * 0.04))
+      innerWidth = snap(Math.max(0.75, s * 0.022))
+      stepX = Math.round(COS30 * s * scale) / scale
+      // Centre on a pixel boundary, plus half a pixel when the edge is an odd
+      // number of device pixels wide, so vertical edges cover whole pixels.
+      const half = Math.round(edgeWidth * scale) % 2 ? 0.5 : 0
+      cx = (Math.round((w / 2) * scale) + half) / scale
+      cy = h / 2
     }
 
     const project = (X: number, Y: number, Z: number): Point => [
-      w / 2 + (X - Z) * COS30 * s,
-      h / 2 + ((X + Z) * 0.5 - Y) * s,
+      cx + (X - Z) * stepX,
+      cy + ((X + Z) * 0.5 - Y) * s,
     ]
 
     function face(a: Point, b: Point, c: Point, d: Point, fill: string, insets: number[]) {
@@ -145,7 +172,7 @@ export function VoxelCube({ className }: { className?: string }) {
       ctx!.fillStyle = fill
       ctx!.fill()
       ctx!.strokeStyle = EDGE
-      ctx!.lineWidth = 1.15
+      ctx!.lineWidth = edgeWidth
       ctx!.stroke()
 
       // Inset squares; faces are parallelograms, so q(u,v) = a + u(b-a) + v(d-a)
@@ -163,13 +190,13 @@ export function VoxelCube({ className }: { className?: string }) {
         ctx!.closePath()
       }
       ctx!.strokeStyle = INNER
-      ctx!.lineWidth = 0.9
+      ctx!.lineWidth = innerWidth
       ctx!.stroke()
     }
 
     function dots(points: Point[]) {
       ctx!.beginPath()
-      const r = Math.max(1.1, s * 0.045)
+      const r = Math.max(edgeWidth * 1.1, s * 0.045)
       for (const p of points) {
         ctx!.moveTo(p[0] + r, p[1])
         ctx!.arc(p[0], p[1], r, 0, Math.PI * 2)
@@ -268,14 +295,33 @@ export function VoxelCube({ className }: { className?: string }) {
       }
     }
 
-    resize()
-    draw(performance.now())
-
-    const ro = new ResizeObserver(() => {
-      resize()
+    const redraw = (deviceSize?: { inlineSize: number; blockSize: number }) => {
+      resize(deviceSize)
       if (!running) draw(performance.now())
-    })
-    ro.observe(canvas)
+    }
+
+    redraw()
+
+    // device-pixel-content-box also fires on zoom / DPR changes (Chromium, Firefox)
+    const ro = new ResizeObserver(([entry]) => redraw(entry.devicePixelContentBoxSize?.[0]))
+    try {
+      ro.observe(canvas, { box: 'device-pixel-content-box' })
+    } catch {
+      ro.observe(canvas)
+    }
+
+    // Safari: watch the resolution media query instead
+    let dprQuery: MediaQueryList | null = null
+    const onDprChange = () => {
+      redraw()
+      watchDpr()
+    }
+    const watchDpr = () => {
+      dprQuery?.removeEventListener('change', onDprChange)
+      dprQuery = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`)
+      dprQuery.addEventListener('change', onDprChange)
+    }
+    watchDpr()
 
     const io = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting
@@ -293,6 +339,7 @@ export function VoxelCube({ className }: { className?: string }) {
       cancelAnimationFrame(raf)
       ro.disconnect()
       io.disconnect()
+      dprQuery?.removeEventListener('change', onDprChange)
       canvas.removeEventListener('pointerenter', onEnter)
       canvas.removeEventListener('pointerleave', onLeave)
       document.removeEventListener('visibilitychange', sync)
