@@ -29,7 +29,7 @@ export function CopyButton({ value, label }: { value: string; label: string }) {
         }
         setCopied(true)
       }}
-      className="inline-flex h-10 items-center gap-2 rounded-full border border-line-strong px-4 text-sm text-fg transition-colors hover:border-white/30 hover:bg-white/[0.04]"
+      className="-mr-3 inline-flex h-9 items-center gap-2 rounded-full px-3 text-sm text-fg-subtle transition-colors hover:bg-white/[0.06] hover:text-fg"
     >
       {copied ? <Check /> : <Copy />}
       <span aria-live="polite">{copied ? 'Copiado' : label}</span>

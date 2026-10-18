@@ -20,7 +20,7 @@ export default function BlogPage() {
   return (
     <section className="flex-1">
       <Container className="pb-24 pt-10 sm:pt-16">
-        <PageIntro eyebrow="Blog" title="Escritos" />
+        <PageIntro title="Blog" />
 
         <ol className="animate-rise stagger mt-14 border-b border-line sm:mt-20" style={delay(220)}>
           {posts.map((post) => (

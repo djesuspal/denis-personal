@@ -89,7 +89,7 @@ export default async function OpengraphImage() {
                 textTransform: 'uppercase',
               }}
             >
-              denis.pe · Lima, Perú
+              denis.pe
             </div>
           </div>
         </div>

@@ -7,11 +7,10 @@ export const site = {
   role: 'Empresario y Angel Investor',
   title: 'Denis Jesus Palma Abanto | Empresario e Inversionista',
   description:
-    'Ex ingeniero de software convertido en empresario e inversionista. Enfocado en desarrollo inmobiliario, venture capital e innovación tecnológica.',
+    'Empresario y Angel Investor. Actualmente en QuickNode; invierte en bienes raíces y startups de tecnología.',
+  company: { name: 'QuickNode', url: 'https://www.quicknode.com' },
   email: 'me@denis.pe',
   linkedin: 'https://www.linkedin.com/in/denis-jesus-palma-abanto-512417336/',
-  city: 'Lima, Perú',
-  timeZone: 'America/Lima',
   portrait: '/images/denis-jesus-palma-abanto.jpg',
 } as const
 

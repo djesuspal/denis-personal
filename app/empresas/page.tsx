@@ -80,7 +80,7 @@ export default function CompaniesPage() {
   return (
     <section className="flex-1">
       <Container className="pb-24 pt-10 sm:pt-16">
-        <PageIntro eyebrow="Empresas" title="Portafolio" />
+        <PageIntro title="Empresas" />
 
         <ul
           className="animate-rise stagger mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:mt-20 sm:grid-cols-2 lg:grid-cols-3"

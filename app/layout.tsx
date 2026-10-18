@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     'Desarrollo Inmobiliario',
     'Venture Capital',
     'Blockchain',
+    'QuickNode',
     'Ingeniero de Software',
     'Lima',
     'Perú',
